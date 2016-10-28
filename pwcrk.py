@@ -12,16 +12,17 @@ def selDict():
             counter += 1
             textFiles.append(file)
             print("(%d) %s" % (counter, file)) # Prints list of usable files and their numbers
-    
+            
+
     selectionStr = input()
     selectionStr = selectionStr.replace(" ", "") # Removes white space
     selectionList = selectionStr.split(",") # Creates list from string split at commas
     selectionList = list(map(int, selectionList)) # Changes list values from str to int
-    
+
     # Makes sure that selection is valid
     for pos in selectionList:
-        if(pos > len(textFiles)):
-            print("%d is not a valid file. Please select again" % (pos))
+        if(pos > len(textFiles) or pos < 1):
+            print("%d is not a valid file. Please select again" % (selectionList[pos]))
             selDict()
 
     selFiles = []
